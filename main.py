@@ -17,8 +17,16 @@ def main() -> int:
   with open(path_to_file) as f:
     file_contents = f.read()
 
-  print(f"Frankenstein Wordcount: {count_words(file_contents)}")
-  print(f"Frankenstein characters: {characters(file_contents)}")
+  print()
+  print(f"--- Begin report of {path_to_file} ---")
+  print(f"{count_words(file_contents)} words found in the document")
+  print()
+  
+  chars = dict(sorted(characters(file_contents).items(), key=lambda item: item[1], reverse=True))
+  for k in chars:
+    if k.isalpha():
+      print(f"The '{k}' character was found {chars[k]} times")
+  print("--- End report ---")
 
 if __name__ == '__main__':
   main()  # next section explains the use of sys.exit
