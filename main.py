@@ -1,9 +1,19 @@
-# from stats import *
+#from stats import *
 import sys
-# If this line is not present OR stats is imported first:
-#   - Then the __pycache__ folder will get generated
-#     for the precompiled binary of stats.
 sys.dont_write_bytecode = True
+
+# NOTE:
+#   Python will create a __pycache__ folder that contains the
+#   precompiled binaries of all locally imported files.
+#
+#   This action can be suppressed a couple ways:
+#     1. Before running the python code, export an ENV variable:
+#        ex.: export PYTHONDONTWRITEBYTECODE=1
+#     2. import sys then set the dont_write_bytecode flag to True.
+#        ex.: import sys
+#             sys.dont_write_bytecode = True
+#        This must be listed before any other imports.
+
 from stats import *
 
 def get_book_text(file_path):
